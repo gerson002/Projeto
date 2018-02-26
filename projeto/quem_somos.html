@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Quem Somos</title>
+		<link href="estilo.css" rel="stylesheet" type="text/css" />
+		<script language="javascript" src="js/jquery-3.2.1.min.js"></script>
+		<!-- http://coolcarousels.frebsite.nl/c/65/ -->
+		<script language="javascript" src="js/jquery.carouFredSel-6.2.0-packed.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var $imgs = $('#images .carousel'),
+					$capt = $('#captions .carousel'),
+					$timr = $('#timer');
+
+				$imgs.carouFredSel({
+					circular: false,
+					scroll: {
+						easing: 'quadratic',
+						duration: 2,
+						timeoutDuration: 3000,
+						onBefore: function( data ) {
+							$capt.trigger( 'slideTo', [ '.' + data.items.visible.first().attr( 'alt' ) ] );
+							$timr.stop().animate({
+								opacity: 0
+							}, data.scroll.duration);
+						},
+						onAfter: function() {
+							$timr.stop().animate({
+								opacity: 1
+							}, 150);
+						}
+					},
+					auto: {
+						progress: '#timer'
+					},
+					pagination: {
+						container: '.pager',
+						anchorBuilder: function( i ) {
+							return '<a class="p' + i + '" href="#"></a>';
+						}
+					}
+				});
+				$capt.carouFredSel({
+					circular: false,
+					auto: false,
+					scroll: {
+						easing: 'quadratic',
+						duration: 2
+					}
+				});
+			});
+		</script>
+	</head>
+	
+	<body>
+		<div class="container">
+			<!-- Cabeçalho -->
+			<div class="row ei">
+				<div class="coluna_logomarca">
+					<!-- W3C recomenda colocar a largura da imagem -->
+					<img src="imgs/logomarca.png" width="249" height="49"/>
+				</div>
+				<div class="coluna_menu">
+					<div class="container_menu bordaArredondada">					
+						<a href="index.html">Página Inicial</a>
+						<a href="quem_somos.html">Quem Somos</a>
+						<a href="produtos.html">Nossos Produtos</a>
+						<a href="localizacao.html">Localização</a>
+						<a href="fale_conosco.html">Fale Conosco</a>
+					</div>
+				</div>
+			</div>
+			<!-- Fim Cabeçalho -->
+			
+			<!-- Slider --> 
+			<div class="row ei">
+				<div id="containerSlider">
+					<div id="wrapper">
+						<div id="images">
+							<div class="carousel">
+								<img src="imgs/slider/img01.jpg" width="925" height="295" alt="img01" />
+								<img src="imgs/slider/img02.jpg" width="925" height="295" alt="img02" />
+								<img src="imgs/slider/img03.jpg" width="925" height="295" alt="img03" />
+							</div>
+						</div>						
+					</div>				
+				</div>
+			</div>
+			<!-- Fim Slider -->
+			
+			<!-- inicio conteudo -->
+			<div>
+				<h1>Quem Somos</h1>
+				<h2>Conheça um pouco mais sobre nossa empresa</h2>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in tempus quam. Proin congue tincidunt magna. Curabitur eu nibh nisl. Fusce eu iaculis tortor. Maecenas blandit accumsan vestibulum. Curabitur nisi sapien, fringilla id varius ac, adipiscing sed dolor. Maecenas id mauris aliquam elit gravida consequat. In hac habitasse platea dictumst. Pellentesque fringilla tincidunt vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed turpis mi, eget scelerisque tortor.
+				</p>
+				<div class="clear"></div>			
+				<a href="imgs/foto_maior800x600.jpg" target="_blank">
+					<img src="imgs/foto_menor200x150.jpg" alt="Foto lateral" align="right" vspace="5" hspace="5"/>
+				</a>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in tempus quam. Proin congue tincidunt magna. Curabitur eu nibh nisl. Fusce eu iaculis tortor. Maecenas blandit accumsan vestibulum. Curabitur nisi sapien, fringilla id varius ac, adipiscing sed dolor. Maecenas id mauris aliquam elit gravida consequat. In hac habitasse platea dictumst. Pellentesque fringilla tincidunt vehicula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed turpis mi, eget scelerisque tortor.
+				</p>				
+			</div>
+			<!--fim conteudo -->
+			
+			<!-- Rodape -->
+			<div class="row fundoBrancoTransp bordaArredondada rodape ei">
+				Informação de rodapé
+			</div>
+			<!-- Fim Rodape -->
+		</div>
+	</body>
+
+</html>

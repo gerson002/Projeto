@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Localização</title>
+		<link href="estilo.css" rel="stylesheet" type="text/css" />
+		<script language="javascript" src="js/jquery-3.2.1.min.js"></script>
+		<!-- http://coolcarousels.frebsite.nl/c/65/ -->
+		<script language="javascript" src="js/jquery.carouFredSel-6.2.0-packed.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var $imgs = $('#images .carousel'),
+					$capt = $('#captions .carousel'),
+					$timr = $('#timer');
+
+				$imgs.carouFredSel({
+					circular: false,
+					scroll: {
+						easing: 'quadratic',
+						duration: 2,
+						timeoutDuration: 3000,
+						onBefore: function( data ) {
+							$capt.trigger( 'slideTo', [ '.' + data.items.visible.first().attr( 'alt' ) ] );
+							$timr.stop().animate({
+								opacity: 0
+							}, data.scroll.duration);
+						},
+						onAfter: function() {
+							$timr.stop().animate({
+								opacity: 1
+							}, 150);
+						}
+					},
+					auto: {
+						progress: '#timer'
+					},
+					pagination: {
+						container: '.pager',
+						anchorBuilder: function( i ) {
+							return '<a class="p' + i + '" href="#"></a>';
+						}
+					}
+				});
+				$capt.carouFredSel({
+					circular: false,
+					auto: false,
+					scroll: {
+						easing: 'quadratic',
+						duration: 2
+					}
+				});
+			});
+		</script>
+	</head>
+	
+	<body>
+		<div class="container">
+			<!-- Cabeçalho -->
+			<div class="row ei">
+				<div class="coluna_logomarca">
+					<!-- W3C recomenda colocar a largura da imagem -->
+					<img src="imgs/logomarca.png" width="249" height="49"/>
+				</div>
+				<div class="coluna_menu">
+					<div class="container_menu bordaArredondada">					
+						<a href="index.html">Página Inicial</a>
+						<a href="quem_somos.html">Quem Somos</a>
+						<a href="produtos.html">Nossos Produtos</a>
+						<a href="localizacao.html">Localização</a>
+						<a href="fale_conosco.html">Fale Conosco</a>
+					</div>
+				</div>
+			</div>
+			<!-- Fim Cabeçalho -->
+			
+			<!-- Slider --> 
+			<div class="row ei">
+				<div id="containerSlider">
+					<div id="wrapper">
+						<div id="images">
+							<div class="carousel">
+								<img src="imgs/slider/img01.jpg" width="925" height="295" alt="img01" />
+								<img src="imgs/slider/img02.jpg" width="925" height="295" alt="img02" />
+								<img src="imgs/slider/img03.jpg" width="925" height="295" alt="img03" />
+							</div>
+						</div>										
+					</div>				
+				</div>
+			</div>
+			<!-- Fim Slider -->
+			
+			<!-- inicio conteudo -->
+			<div class="div_conteudo div_container">
+				<h1>Localização</h1>
+				<p>
+					<a href="https://www.google.com.br/maps/place/Orion/@-22.1042213,-50.2129691,398m/data=!3m1!1e3!4m5!3m4!1s0x94959cec35de0909:0x441787173d58088e!8m2!3d-22.1046855!4d-50.2111398" target="_blank">
+						<h3>Clique aqui para ver a localizacao no mapa</h3>
+					</a>
+				</p>
+				<!-- Procedimentos: no google maps no local de sua escolha clica com o botão direito e marque->O que há aqui->No menu do google->Opção Compartilhar ou incorporar mapa-> nessa opção pode-se compartilhar o link ou incorporar o mapa -->
+				<h4>Localização no mapa embutido</h4>
+				<p>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1732.7673298948819!2d-50.21296911644002!3d-22.104221300719114!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94959cec35de0909%3A0x441787173d58088e!2sOrion!5e1!3m2!1spt-BR!2sbr!4v1519180229128" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</p>
+			</div>
+			<!--fim conteudo -->
+			
+			<!-- Rodape -->
+			<div class="row fundoBrancoTransp bordaArredondada rodape ei">
+				Informação de rodapé
+			</div>
+			<!-- Fim Rodape -->
+		</div>
+	</body>
+
+</html>
